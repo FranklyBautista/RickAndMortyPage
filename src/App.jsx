@@ -9,7 +9,8 @@ function App() {
   const API = "https://rickandmortyapi.com/api";
   const [Personajes, setPersonajes] = useState([]);
   const [page, setPage] = useState(1);
-  const [query, setQuery] = useState({ name: "", status: "" });
+  const [name, setName] = useState([]);
+  const [status, setStatus] = useState([]);
 
   const personajes = async ({ page = 1, name = "", status = "" }) => {
     const params = new URLSearchParams();
@@ -33,8 +34,8 @@ function App() {
   };
 
   useEffect(() => {
-    personajes({ page, ...query });
-  }, [page, query]);
+    personajes({ page, name, status });
+  }, [page, name, status]);
 
   const onPrev = () => {
     if (page > 1) {
