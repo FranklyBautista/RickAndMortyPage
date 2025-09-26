@@ -1,6 +1,7 @@
 import { use, useEffect, useState } from "react";
 import CharacterCardGrid from "./components/CharacterCardGrid";
 import Pager from "./components/Pager";
+import Header from "./components/Header";
 
 import "./App.css";
 
@@ -8,16 +9,32 @@ function App() {
   const API = "https://rickandmortyapi.com/api";
   const [Personajes, setPersonajes] = useState([]);
   const [page, setPage] = useState(1);
+  const [query, setQuery] = useState({ name: "", status: "" });
 
-  async function personajes() {
-    const res = await fetch(`${API}/character/?page=${page}`);
+  const personajes = async ({ page = 1, name = "", status = "" }) => {
+    const params = new URLSearchParams();
+
+    params.append("page", page);
+    if (name) params.append("name", name);
+    if (status) params.append("status", status);
+
+    console.log(params.toString());
+
+    const res = await fetch(`${API}/character/?${params.toString()}`);
+    if (!res.ok) {
+      if (res.status === 404) {
+        setPersonajes([]);
+        return;
+      }
+      throw new Error("Error en la API");
+    }
     const data = await res.json();
     setPersonajes(data.results);
-  }
+  };
 
   useEffect(() => {
-    personajes();
-  }, [page]);
+    personajes({ page, ...query });
+  }, [page, query]);
 
   const onPrev = () => {
     if (page > 1) {
@@ -30,6 +47,7 @@ function App() {
 
   return (
     <>
+      <Header Buscarpersonajes={personajes} />
       <CharacterCardGrid Personajes={Personajes} />
       <Pager onNext={onNext} onPrev={onPrev} />
     </>
