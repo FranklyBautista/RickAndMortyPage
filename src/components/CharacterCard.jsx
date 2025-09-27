@@ -1,7 +1,7 @@
 import React from "react";
 import "./CharacterCard.css";
 
-function CharacterCard({ name, img }) {
+function CharacterCard({ name, img, status, gender, species }) {
   return (
     <div className="card mb-3 card-custom">
       <div className="row g-0">
@@ -12,9 +12,9 @@ function CharacterCard({ name, img }) {
           <div className="card-body">
             <h5 className="card-title">{name}</h5>
             <p className="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+              <span>Status: {status}</span> <br />
+              <span>Gender: {gender}</span> <br />
+              <span>Species: {species}</span>
             </p>
             <p className="card-text">
               <small className="text-body-secondary">

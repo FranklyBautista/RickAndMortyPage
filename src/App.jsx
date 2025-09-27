@@ -11,6 +11,17 @@ function App() {
   const [page, setPage] = useState(1);
   const [name, setName] = useState([]);
   const [status, setStatus] = useState([]);
+  const [nPages, setNpages] = useState(0);
+
+  const handleSearch = (searchValue) => {
+    setName(searchValue);
+    setPage(1);
+  };
+
+  const handleStatusChange = (statusValue) => {
+    setStatus(statusValue);
+    setPage(1);
+  };
 
   const personajes = async ({ page = 1, name = "", status = "" }) => {
     const params = new URLSearchParams();
@@ -31,6 +42,7 @@ function App() {
     }
     const data = await res.json();
     setPersonajes(data.results);
+    setNpages(data.info.pages);
   };
 
   useEffect(() => {
@@ -43,14 +55,18 @@ function App() {
     }
   };
   const onNext = () => {
-    setPage(page + 1);
+    if (page < nPages) setPage(page + 1);
   };
 
   return (
     <>
-      <Header Buscarpersonajes={personajes} />
+      <Header
+        Buscarpersonajes={personajes}
+        onSearch={handleSearch}
+        onStatusChange={handleStatusChange}
+      />
       <CharacterCardGrid Personajes={Personajes} />
-      <Pager onNext={onNext} onPrev={onPrev} />
+      <Pager onNext={onNext} onPrev={onPrev} NPages={nPages} Page={page} />
     </>
   );
 }

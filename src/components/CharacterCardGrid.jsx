@@ -5,7 +5,14 @@ function CharacterCardGrid({ Personajes }) {
   return (
     <div>
       {Personajes.map((p) => (
-        <CharacterCard name={p.name} img={p.image} key={p.id} />
+        <CharacterCard
+          name={p.name}
+          img={p.image}
+          status={p.status}
+          gender={p.gender}
+          species={p.species}
+          key={p.id}
+        />
       ))}
     </div>
   );

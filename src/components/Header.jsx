@@ -1,13 +1,18 @@
 import React, { useRef } from "react";
 import "./Header.css";
 
-function Header({ Buscarpersonajes }) {
+function Header({ Buscarpersonajes, onSearch, onStatusChange }) {
   const inputRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = inputRef.current.value;
     Buscarpersonajes({ name });
+    onSearch(name);
+  };
+
+  const handleClick = (status) => {
+    onStatusChange(status);
   };
 
   return (
@@ -30,7 +35,16 @@ function Header({ Buscarpersonajes }) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <a
+                className="nav-link active"
+                aria-current="page"
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  Buscarpersonajes("");
+                  handleClick("");
+                }}
+              >
                 Home
               </a>
             </li>
@@ -47,25 +61,55 @@ function Header({ Buscarpersonajes }) {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown
+                Status
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Action
+                  <a
+                    className="dropdown-item"
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleClick("");
+                    }}
+                  >
+                    All
                   </a>
                 </li>
+                <hr className="dropdown-divider" />
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
+                  <a
+                    className="dropdown-item"
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleClick("alive");
+                    }}
+                  >
+                    Alive
                   </a>
                 </li>
+                <li></li>
                 <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
+                  <a
+                    className="dropdown-item"
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleClick("dead");
+                    }}
+                  >
+                    Dead
+                  </a>
+                  <a
+                    className="dropdown-item"
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleClick("unknown");
+                    }}
+                  >
+                    Unknown
                   </a>
                 </li>
               </ul>

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Pager.css";
 
-function Pager({ onPrev, onNext }) {
+function Pager({ onPrev, onNext, NPages, Page }) {
   return (
     <div className="PagerButtom">
       <button
@@ -11,6 +11,9 @@ function Pager({ onPrev, onNext }) {
       >
         Previous
       </button>
+      <p>
+        {Page} - {NPages}
+      </p>
       <button
         type="button"
         className="btn btn-outline-light"
