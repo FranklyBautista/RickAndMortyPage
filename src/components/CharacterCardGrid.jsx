@@ -1,9 +1,10 @@
 import React from "react";
 import CharacterCard from "./CharacterCard";
+import "./CharacterCardGrid.css";
 
 function CharacterCardGrid({ Personajes }) {
   return (
-    <div>
+    <div className="grid-container">
       {Personajes.map((p) => (
         <CharacterCard
           name={p.name}

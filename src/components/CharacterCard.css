@@ -1,6 +1,14 @@
 .card.card-custom {
   height: 100%;
-  max-width: 540px;
+  max-width: 100%;
   padding: 0;
   border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.img-custom {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
