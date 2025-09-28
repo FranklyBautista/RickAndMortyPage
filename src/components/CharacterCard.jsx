@@ -1,11 +1,26 @@
 import React from "react";
 import "./CharacterCard.css";
+import CaracterCardModal from "./CaracterCardModal";
 
-function CharacterCard({ name, img, status, gender, species }) {
+function CharacterCard({
+  name,
+  img,
+  status,
+  gender,
+  species,
+  onSelect,
+  character,
+}) {
   return (
-    <div className="card card-custom">
+    <div
+      className="card card-custom"
+      style={{ cursor: "pointer" }}
+      onClick={() => {
+        onSelect(character);
+      }}
+    >
       <div className="row g-0">
-        <div className="col-md-4">
+        <div className="col-md-4 ">
           <img
             src={img}
             className="img-fluid rounded-start img-custom"

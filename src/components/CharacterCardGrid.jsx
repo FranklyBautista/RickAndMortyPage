@@ -2,7 +2,7 @@ import React from "react";
 import CharacterCard from "./CharacterCard";
 import "./CharacterCardGrid.css";
 
-function CharacterCardGrid({ Personajes }) {
+function CharacterCardGrid({ Personajes, onSelect }) {
   return (
     <div className="grid-container">
       {Personajes.map((p) => (
@@ -13,6 +13,8 @@ function CharacterCardGrid({ Personajes }) {
           gender={p.gender}
           species={p.species}
           key={p.id}
+          character={p}
+          onSelect={onSelect}
         />
       ))}
     </div>

@@ -2,6 +2,7 @@ import { use, useEffect, useState } from "react";
 import CharacterCardGrid from "./components/CharacterCardGrid";
 import Pager from "./components/Pager";
 import Header from "./components/Header";
+import CaracterCardModal from "./components/CaracterCardModal";
 
 import "./App.css";
 
@@ -13,6 +14,10 @@ function App() {
   const [status, setStatus] = useState([]);
   const [nPages, setNpages] = useState(0);
 
+  //Para el modal
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleSearch = (searchValue) => {
     setName(searchValue);
     setPage(1);
@@ -21,6 +26,15 @@ function App() {
   const handleStatusChange = (statusValue) => {
     setStatus(statusValue);
     setPage(1);
+  };
+
+  const handleSelectCharacter = (character) => {
+    setSelectedCharacter(character);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   const personajes = async ({ page = 1, name = "", status = "" }) => {
@@ -65,8 +79,18 @@ function App() {
         onSearch={handleSearch}
         onStatusChange={handleStatusChange}
       />
-      <CharacterCardGrid Personajes={Personajes} />
+      <CharacterCardGrid
+        Personajes={Personajes}
+        onSelect={handleSelectCharacter}
+      />
       <Pager onNext={onNext} onPrev={onPrev} NPages={nPages} Page={page} />
+
+      {isModalOpen && (
+        <CaracterCardModal
+          data={selectedCharacter}
+          onCloser={handleCloseModal}
+        />
+      )}
     </>
   );
 }

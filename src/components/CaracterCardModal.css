@@ -1,0 +1,53 @@
+.modal-card {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+.modal-row {
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-height: fit-content;
+  margin-top: 10px;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.card-body {
+  max-height: 100%;
+}
+
+.card-text {
+  max-height: 300px;
+}
+
+.dropdown-menu {
+  max-height: 170px;
+  width: fit-content;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+  padding-left: 10px;
+}
