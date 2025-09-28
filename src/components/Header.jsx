@@ -19,7 +19,7 @@ function Header({ Buscarpersonajes, onSearch, onStatusChange }) {
     <nav className="navbar navbar-expand-lg bg-body-tertiary navbar-custom">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
-          Navbar
+          <img src="/icono.png" alt="iconito" style={{ width: 45 }} />
         </a>
         <button
           className="navbar-toggler"
@@ -43,6 +43,7 @@ function Header({ Buscarpersonajes, onSearch, onStatusChange }) {
                   e.preventDefault();
                   Buscarpersonajes("");
                   handleClick("");
+                  onSearch("");
                 }}
               >
                 Home

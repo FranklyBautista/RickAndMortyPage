@@ -37,14 +37,16 @@ function App() {
     setIsModalOpen(false);
   };
 
+  const handlePage = (numberPage) => {
+    setPage(numberPage);
+  };
+
   const personajes = async ({ page = 1, name = "", status = "" }) => {
     const params = new URLSearchParams();
 
     params.append("page", page);
     if (name) params.append("name", name);
     if (status) params.append("status", status);
-
-    console.log(params.toString());
 
     const res = await fetch(`${API}/character/?${params.toString()}`);
     if (!res.ok) {
@@ -83,7 +85,12 @@ function App() {
         Personajes={Personajes}
         onSelect={handleSelectCharacter}
       />
-      <Pager onNext={onNext} onPrev={onPrev} NPages={nPages} Page={page} />
+      <Pager
+        onNext={onNext}
+        onPrev={onPrev}
+        NPages={nPages}
+        onPage={handlePage}
+      />
 
       {isModalOpen && (
         <CaracterCardModal

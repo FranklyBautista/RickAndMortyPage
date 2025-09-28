@@ -1,5 +1,18 @@
-.PagerButtom {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+.pager {
+  margin-top: 25px;
+}
+
+.custom-pagination {
+  max-width: 230px;
+  min-width: 100px;
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.custom-pagination::-webkit-scrollbar {
+  display: none;
 }
