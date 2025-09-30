@@ -1,5 +1,6 @@
 .pager {
-  margin-top: 25px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .custom-pagination {
@@ -15,4 +16,17 @@
 
 .custom-pagination::-webkit-scrollbar {
   display: none;
+}
+
+.page-link {
+  color: #eb5b00;
+}
+
+a.page-link.active {
+  background-color: #eb5b00 !important;
+  border-color: #eb5b00 !important;
+}
+
+a.page-link:hover {
+  color: #eb5b00 !important;
 }

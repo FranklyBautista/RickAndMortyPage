@@ -35,8 +35,44 @@ img {
   justify-content: end;
 }
 
-.card-body {
-  max-height: 100%;
+.card-grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 50px;
+  grid-template-rows: auto 1fr 1fr;
+  grid-template-areas:
+    "title  fav"
+    "contenido  fav"
+    "caps  fav";
+  gap: 0.5rem;
+  padding: 0 0 0 1rem;
+}
+
+.box-title {
+  padding-top: 1rem;
+  grid-area: title;
+}
+.box-content {
+  grid-area: contenido;
+}
+.favorite-section {
+  background-color: #eb5b00;
+  border-radius: 20px 10px 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-area: fav;
+}
+.box-caps {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  grid-area: caps;
+}
+
+.box-caps button {
+  max-width: fit-content;
 }
 
 .card-text {
@@ -44,10 +80,27 @@ img {
 }
 
 .dropdown-menu {
-  max-height: 170px;
+  max-height: 145px;
   width: fit-content;
   overflow-y: auto;
   overflow-x: hidden;
   padding-right: 10px;
   padding-left: 10px;
+}
+
+.estrella {
+  font-size: 50px;
+  color: #ffcc00;
+  font-variation-settings: "FILL" 0;
+}
+
+.estrellaRellena {
+  font-size: 50px;
+  color: #ffcc00;
+  font-variation-settings: "FILL" 1;
+}
+
+a:hover {
+  color: #ffcc00;
+  text-decoration: none;
 }

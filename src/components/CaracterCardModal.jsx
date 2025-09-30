@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CaracterCardModal.css";
 
-function CaracterCardModal({ data, onCloser }) {
+function CaracterCardModal({ data, onCloser, onFavorite, isFavorite }) {
   return (
     <div className="card mb-3 modal-card">
       <div className="button-container">
@@ -19,17 +19,39 @@ function CaracterCardModal({ data, onCloser }) {
           />
         </div>
         <div className="col-md-8">
-          <div className="card-body">
-            <h3 className="card-title">{data.name}</h3>
-            <p className="card-text">
-              <span>Status: {data.status}</span> <br />
-              <span>Gender: {data.gender}</span> <br />
-              <span>Species: {data.species}</span> <br />
-              <span>Origin: {data.origin.name}</span> <br />
-              <span>Location: {data.location.name}</span>
-            </p>
-            <hr />
-            <div className="btn-group dropend">
+          {/* ----------------------------------------- */}
+          <div className="card-body card-grid">
+            <div className="box-title">
+              <h3 className="card-title ">{data.name}</h3>
+            </div>
+
+            <div className="box-content">
+              <p className="card-text ">
+                <span>Status: {data.status}</span> <br />
+                <span>Gender: {data.gender}</span> <br />
+                <span>Species: {data.species}</span> <br />
+                <span>Origin: {data.origin.name}</span> <br />
+                <span>Location: {data.location.name}</span>
+              </p>
+            </div>
+
+            <div
+              className="favorite-section"
+              onClick={(e) => {
+                e.preventDefault();
+                onFavorite(data);
+              }}
+            >
+              <a
+                className={`material-symbols-outlined ${
+                  isFavorite ? "estrellaRellena" : "estrella"
+                }`}
+                href="#"
+              >
+                star
+              </a>
+            </div>
+            <div className="btn-group dropend box-caps">
               <button
                 type="button"
                 className="btn btn-secondary dropdown-toggle"
@@ -44,13 +66,8 @@ function CaracterCardModal({ data, onCloser }) {
                 ))}
               </ul>
             </div>
-
-            <p className="card-text">
-              <small className="text-body-secondary">
-                Last updated 3 mins ago
-              </small>
-            </p>
           </div>
+          {/* ----------------------------------------- */}
         </div>
       </div>
     </div>

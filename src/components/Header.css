@@ -2,3 +2,14 @@ nav.navbar.navbar-custom {
   width: 100%;
   margin-bottom: 25px;
 }
+
+.menu-custom {
+  max-height: fit-content;
+}
+
+.btn-custom {
+  box-sizing: border-box;
+  background-color: inherit;
+  border: none;
+  color: black;
+}

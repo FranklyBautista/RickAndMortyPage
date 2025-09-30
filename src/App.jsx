@@ -3,6 +3,8 @@ import CharacterCardGrid from "./components/CharacterCardGrid";
 import Pager from "./components/Pager";
 import Header from "./components/Header";
 import CaracterCardModal from "./components/CaracterCardModal";
+import Footer from "./components/Footer";
+import FavoritesPage from "./components/FavoritesPage";
 
 import "./App.css";
 
@@ -13,6 +15,7 @@ function App() {
   const [name, setName] = useState([]);
   const [status, setStatus] = useState([]);
   const [nPages, setNpages] = useState(0);
+  const [favorites, setFavorites] = useState([]);
 
   //Para el modal
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -39,6 +42,14 @@ function App() {
 
   const handlePage = (numberPage) => {
     setPage(numberPage);
+  };
+
+  const handleFavorite = (favoriteCharacter) => {
+    setFavorites((prevFavorites) => [...prevFavorites, favoriteCharacter]);
+  };
+
+  const hanldeNothig = () => {
+    return;
   };
 
   const personajes = async ({ page = 1, name = "", status = "" }) => {
@@ -96,8 +107,13 @@ function App() {
         <CaracterCardModal
           data={selectedCharacter}
           onCloser={handleCloseModal}
+          onFavorite={handleFavorite}
+          isFavorite={favorites.some((fav) => fav.id === selectedCharacter.id)}
         />
       )}
+
+      <FavoritesPage Favorites={favorites} onFavorite={hanldeNothig} />
+      <Footer />
     </>
   );
 }

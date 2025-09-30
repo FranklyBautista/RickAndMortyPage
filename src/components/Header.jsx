@@ -64,7 +64,7 @@ function Header({ Buscarpersonajes, onSearch, onStatusChange }) {
               >
                 Status
               </a>
-              <ul className="dropdown-menu">
+              <ul className="dropdown-menu menu-custom">
                 <li>
                   <a
                     className="dropdown-item"
@@ -116,8 +116,14 @@ function Header({ Buscarpersonajes, onSearch, onStatusChange }) {
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" aria-disabled="true">
-                Disabled
+              <a
+                className="nav-link"
+                href="#"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"
+              >
+                Favorites
               </a>
             </li>
           </ul>
