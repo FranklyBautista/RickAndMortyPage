@@ -136,8 +136,8 @@ function Header({ Buscarpersonajes, onSearch, onStatusChange }) {
               aria-label="Search"
               autoComplete="off"
             />
-            <button className="btn btn-outline-success" type="submit">
-              Search
+            <button className=" btn btn-outline-success" type="submit">
+              <span className="material-symbols-outlined">search</span>
             </button>
           </form>
         </div>

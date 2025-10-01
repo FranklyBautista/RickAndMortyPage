@@ -15,11 +15,22 @@ function App() {
   const [name, setName] = useState([]);
   const [status, setStatus] = useState([]);
   const [nPages, setNpages] = useState(0);
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("favoritos") ?? "[]");
+    } catch {
+      return [];
+    }
+  });
 
   //Para el modal
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("favoritos", JSON.stringify(favorites));
+    console.log("cambio");
+  }, [favorites]);
 
   const handleSearch = (searchValue) => {
     setName(searchValue);
@@ -45,7 +56,11 @@ function App() {
   };
 
   const handleFavorite = (favoriteCharacter) => {
-    setFavorites((prevFavorites) => [...prevFavorites, favoriteCharacter]);
+    if (favorites.some((fav) => fav.id === favoriteCharacter.id)) {
+      setFavorites(favorites.filter((fav) => fav.id !== favoriteCharacter.id));
+    } else {
+      setFavorites((prevFavorites) => [...prevFavorites, favoriteCharacter]);
+    }
   };
 
   const hanldeNothig = () => {
