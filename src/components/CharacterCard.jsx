@@ -35,11 +35,6 @@ function CharacterCard({
               <span>Gender: {gender}</span> <br />
               <span>Species: {species}</span>
             </p>
-            <p className="card-text">
-              <small className="text-body-secondary">
-                Hola texto secundario
-              </small>
-            </p>
           </div>
         </div>
       </div>

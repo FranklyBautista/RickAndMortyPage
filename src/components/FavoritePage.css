@@ -3,3 +3,7 @@
   flex-direction: column;
   gap: 0.8rem;
 }
+
+.card-body {
+  height: 170px;
+}
