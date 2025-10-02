@@ -6,8 +6,10 @@ function Footer({}) {
     <footer className="footer-container">
       <p>&copy; 2025 Frankly Bautista – Proyecto React</p>
       <p>
-        <a href="https://github.com/FranklyBautista">GitHub</a> |
-        <a href="https://linkedin.com/in/tuusuario">LinkedIn</a>
+        <a href="https://github.com/FranklyBautista" target="_blank">
+          GitHub
+        </a>{" "}
+        |<a href="https://linkedin.com/in/tuusuario">LinkedIn</a>
       </p>
       <small>
         Datos obtenidos de la{" "}
